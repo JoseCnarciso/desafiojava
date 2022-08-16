@@ -1,10 +1,12 @@
 package util;
+
 import model.Estoque;
 import model.Pedido;
 import validadores.IValidadorEmail;
 import validadores.IValidadorNome;
 import validadores.IValidadorProduto;
 import validadores.IValidadorQuantidade;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -20,41 +22,31 @@ public class FileProcessor {
     private final String ARQUIVO_ESTOQUE = "E:\\Mentorama\\DesafioJava\\estoque.txt";
 
 
-
-    public static boolean isStringNulaOuVazia(String value) {
+    public static boolean isStringNulaOuVazia( String value ) {
         return (value == null || value.trim().equals(""));
     }
 
-        public List<Pedido> lerArquivoPedidos() {
-            List<Pedido> listaPedidos = new ArrayList<>();
+    public List<Pedido> lerArquivoPedidos() {
+        List<Pedido> listaPedidos = new ArrayList<>();
         try {
             // Linha de endereço do arquivo a ser lido
             Path filePath = Paths.get(ARQUIVO_PEDIDO);
             // Lista de Strings... Será lido linha a linha
             List<String> lines = Files.readAllLines(filePath);
 
-                    for(int i = 1; i < lines.size(); i++){
+            for (int i = 1; i < lines.size(); i++) {
+                String[] pedido = lines.get(i).split(",");
+                if (pedido.length == 4) {
+                    Pedido ped = new Pedido();
+                    ped.setNome(pedido[0].trim());
+                    ped.setEmail(pedido[1].trim());
+                    ped.setCodigoProduto(pedido[2].trim());
+                    ped.setQuantidadeProduto(Integer.parseInt(pedido[3].trim()));
 
-
-
-            String [] pedido = lines.get(i).split(",");
-
-            if(pedido.length == 4) {
-
-
-
-            Pedido ped  = new Pedido();
-                        ped.setNome(pedido[0].trim());
-                        ped.setEmail(pedido[1].trim());
-                        ped.setCodigoProduto(pedido[2].trim());
-                        ped.setQuantidadeProduto(Integer.parseInt(pedido[3].trim()));
-
-                        listaPedidos.add(ped);
+                    listaPedidos.add(ped);
+                }
 
             }
-
-
-        }
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -64,10 +56,10 @@ public class FileProcessor {
         return listaPedidos;
     }
 
-    public void addEstoque( Estoque estoque ) throws IOException {
-
-        Path path = Paths.get(ARQUIVO_ESTOQUE);
-        String conteudo = estoque.getProdutoCodigo() + "," + estoque.getQtd() + "\n";
-        Files.writeString(path, conteudo, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
-    }
+//    public void addEstoque( Estoque estoque ) throws IOException {
+//
+//        Path path = Paths.get(ARQUIVO_ESTOQUE);
+//        String conteudo = estoque.getProdutoCodigo() + "," + estoque.getQtd() + "\n";
+//        Files.writeString(path, conteudo, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+//    }
 }

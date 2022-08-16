@@ -11,21 +11,12 @@ import java.util.List;
 
 import static util.FileProcessor.isStringNulaOuVazia;
 
-public class IValidadorNome implements IValidador {
+public class IValidadorNome {
 
-    @Override
-    public boolean iValidador( Pedido pedido) {
-//        FileProcessor filePath = new FileProcessor();
-//        List<String> lines = Files.readAllLines((Path) filePath);
-//
-//        for(int i = 1; i < lines.size(); i++) {
-//            // Vetor de pedido, onde as linhas lidas são divididas pela (",") VÍRGULA
-//            String[] pedido = lines.get(i).split(",");
-//            if (pedido[0].isEmpty())
-//                System.out.println("Nome não informado ");
-//        }
+    public boolean iValidador( Pedido pedido ) {
 
         if (isStringNulaOuVazia(pedido.getNome())) {
+            System.out.println("Pedido cancelado ");
             System.out.println("Nome não informado ");
             return false;
         }

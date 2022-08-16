@@ -30,6 +30,6 @@ public class Estoque {
     public String toString() {
         return
                 "produtoCodigo=" + produtoCodigo +
-                ", qtd=" + qtd;
+                        ", qtd=" + qtd;
     }
 }

@@ -15,7 +15,7 @@ public class Main {
 
     static EstoquesDB estoqueDB = new EstoquesDB();
 
-    public static void main( String[] args )  {
+    public static void main( String[] args ) {
         try {
             Scanner scanner = new Scanner(System.in);
 
@@ -33,7 +33,7 @@ public class Main {
 
             System.out.println("Processando pedidos...");
 
-            FileProcessor fileProcessor= new FileProcessor();
+            FileProcessor fileProcessor = new FileProcessor();
             List<Pedido> pedidoList = fileProcessor.lerArquivoPedidos();
 
             IValidadorNome validadorNome = new IValidadorNome();
@@ -42,13 +42,12 @@ public class Main {
             IValidadorQuantidade validadorQuantidade = new IValidadorQuantidade();
 
 
-            for(Pedido pedido : pedidoList)  {
+            for (Pedido pedido : pedidoList) {
 
                 boolean isNomeValido = validadorNome.iValidador(pedido);
                 boolean isEmailValido = validadorEmail.iValidador(pedido);
                 boolean isCodigoProdutoValido = validadorProduto.iValidador(pedido);
                 boolean isQuantidadeValido = validadorQuantidade.iValidador(pedido);
-
 
 
                 if (isNomeValido && isEmailValido && isCodigoProdutoValido && isQuantidadeValido) {
@@ -65,7 +64,7 @@ public class Main {
 //
                         System.out.println("Codigo Produto: " + pedido.getCodigoProduto());
                         System.out.println("Quantidade atual insuficiente.");
-                        System.out.println("Quantidade atual: " +quantidadeProdutoAtual + " - quantidade pedido: " +quantidadeProdutoPedido);
+                        System.out.println("Quantidade atual: " + quantidadeProdutoAtual + " - quantidade pedido: " + quantidadeProdutoPedido);
                     } else {
                         // se sim, confirma o pedido e baixar a quantidade
                         estoqueDB.baixarEstoque(codigoProduto, quantidadeProdutoPedido);
@@ -82,8 +81,6 @@ public class Main {
             e.printStackTrace();
         }
     }
-
-
 
 
 }

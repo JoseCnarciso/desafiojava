@@ -6,7 +6,7 @@ public class Pedido {
     private String codigoProduto;
     private int quantidadeProduto;
 
-    public Pedido( ) {
+    public Pedido() {
         this.nome = nome;
         this.email = email;
         this.codigoProduto = codigoProduto;
