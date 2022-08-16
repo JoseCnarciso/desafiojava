@@ -62,9 +62,11 @@ public class Main {
                     // validar se a quantidade do estoque é suficiente para confirmar o pedido
                     if (quantidadeProdutoPedido > quantidadeProdutoAtual) {
 //
+                        System.out.println("Pedido cancelado = " + pedido);
                         System.out.println("Codigo Produto: " + pedido.getCodigoProduto());
                         System.out.println("Quantidade atual insuficiente.");
                         System.out.println("Quantidade atual: " + quantidadeProdutoAtual + " - quantidade pedido: " + quantidadeProdutoPedido);
+
                     } else {
                         // se sim, confirma o pedido e baixar a quantidade
                         estoqueDB.baixarEstoque(codigoProduto, quantidadeProdutoPedido);

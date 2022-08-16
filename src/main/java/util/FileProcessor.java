@@ -23,7 +23,9 @@ public class FileProcessor {
 
 
     public List<Pedido> lerArquivoPedidos() {
+
         List<Pedido> listaPedidos = new ArrayList<>();
+
         try {
             // Linha de endereço do arquivo a ser lido
             Path filePath = Paths.get(ARQUIVO_PEDIDO);
@@ -34,6 +36,7 @@ public class FileProcessor {
                 String[] pedido = lines.get(i).split(",");
                 //Informa a quantidade de colunas do arquivo
                 if (pedido.length == 4) {
+
                     Pedido ped = new Pedido();
                     ped.setNome(pedido[0].trim());
                     ped.setEmail(pedido[1].trim());
