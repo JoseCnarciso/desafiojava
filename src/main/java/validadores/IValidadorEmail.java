@@ -2,7 +2,8 @@ package validadores;
 
 import model.Pedido;
 
-import static util.FileProcessor.isStringNulaOuVazia;
+import static validadores.IsStringNulaOuVazia.isStringNulaOuVazia;
+
 
 public class IValidadorEmail {
 

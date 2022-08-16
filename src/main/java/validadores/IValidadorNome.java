@@ -9,7 +9,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
-import static util.FileProcessor.isStringNulaOuVazia;
+import static validadores.IsStringNulaOuVazia.isStringNulaOuVazia;
+
 
 public class IValidadorNome {
 

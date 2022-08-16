@@ -17,14 +17,10 @@ import java.util.List;
 
 
 public class FileProcessor {
+
     // criada costante para acesso dos arquivos
     private final String ARQUIVO_PEDIDO = "E:\\Mentorama\\DesafioJava\\pedidos.txt";
-    private final String ARQUIVO_ESTOQUE = "E:\\Mentorama\\DesafioJava\\estoque.txt";
 
-
-    public static boolean isStringNulaOuVazia( String value ) {
-        return (value == null || value.trim().equals(""));
-    }
 
     public List<Pedido> lerArquivoPedidos() {
         List<Pedido> listaPedidos = new ArrayList<>();
@@ -33,9 +29,10 @@ public class FileProcessor {
             Path filePath = Paths.get(ARQUIVO_PEDIDO);
             // Lista de Strings... Será lido linha a linha
             List<String> lines = Files.readAllLines(filePath);
-
+            // forEach para leitura das linhas
             for (int i = 1; i < lines.size(); i++) {
                 String[] pedido = lines.get(i).split(",");
+                //Informa a quantidade de colunas do arquivo
                 if (pedido.length == 4) {
                     Pedido ped = new Pedido();
                     ped.setNome(pedido[0].trim());
@@ -55,11 +52,4 @@ public class FileProcessor {
 
         return listaPedidos;
     }
-
-//    public void addEstoque( Estoque estoque ) throws IOException {
-//
-//        Path path = Paths.get(ARQUIVO_ESTOQUE);
-//        String conteudo = estoque.getProdutoCodigo() + "," + estoque.getQtd() + "\n";
-//        Files.writeString(path, conteudo, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
-//    }
 }
