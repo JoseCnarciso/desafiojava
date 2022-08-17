@@ -8,3 +8,4 @@ João, joao@gmail.com, 1, 4
 Lucas Santos, lucas@gmail.com, 2, 3
 Luana Alves, luana@gmail.com, 2, 4
 Paulo, paulo@gmail.com, 1, 3
+jose carlos,jose@gmail.com,3,1

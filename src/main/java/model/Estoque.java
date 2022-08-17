@@ -28,8 +28,6 @@ public class Estoque {
 
     @Override
     public String toString() {
-        return
-                "produtoCodigo=" + produtoCodigo +
-                        ", qtd=" + qtd;
+        return "produtoCodigo=" + produtoCodigo + ", qtd=" + qtd;
     }
 }
